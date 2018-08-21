@@ -1,11 +1,11 @@
 import unittest
 from moto import mock_s3, mock_dynamodb2
 from handler import extractMetadata
-from tests.set_up import set_up_dynamodb, set_up_s3
+from tests.set_up import set_up_dynamodb_client, set_up_s3
 import os
 
 
-class TestHandlerFunctions(unittest.TestCase):
+class TestLambdaExtractMetadata(unittest.TestCase):
 
     def setUp(self):
         self.bucket = 'teste'
@@ -32,7 +32,7 @@ class TestHandlerFunctions(unittest.TestCase):
     @mock_s3
     @mock_dynamodb2
     def test_extractMetadata(self):
-        dynamodb = set_up_dynamodb(table=self.table)
+        dynamodb = set_up_dynamodb_client(table=self.table)
         s3 = set_up_s3(
                  bucket=self.bucket,
                  s3objectkey=self.s3objectkey,
@@ -55,6 +55,7 @@ class TestHandlerFunctions(unittest.TestCase):
         self.assertEqual(width, '50')
         self.assertEqual(height, '50')
         self.assertEqual(file_size, '10033')
+
 
     def tearDown(self):
         os.remove(self.file_name)
