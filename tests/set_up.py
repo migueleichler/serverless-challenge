@@ -1,10 +1,8 @@
 from PIL import Image
 import boto3
-import os
 
 
-def set_up_dynamodb(table):
-    dynamodb = boto3.client('dynamodb', region_name='us-east-1')
+def set_up_dynamodb_table(dynamodb, table):
     dynamodb.create_table(
         AttributeDefinitions=[
             {
@@ -24,6 +22,18 @@ def set_up_dynamodb(table):
             'WriteCapacityUnits': 1
         }
     )
+
+
+def set_up_dynamodb_client(table):
+    dynamodb = boto3.client('dynamodb', region_name='us-east-1')
+    set_up_dynamodb_table(dynamodb, table)
+
+    return dynamodb
+
+
+def set_up_dynamodb_resource(table):
+    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    set_up_dynamodb_table(dynamodb, table)
 
     return dynamodb
 
