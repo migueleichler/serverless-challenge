@@ -37,17 +37,17 @@ def extractMetadata(event, context):
 
 
 def getMetadata(event, context):
-    s3objectkey = event['queryStringParameters']
+    s3objectkey = event['queryStringParameters'][0]['s3objectkey']
 
-    dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+    dynamodb = boto3.client('dynamodb', region_name='us-east-1')
     item = dynamodb.get_item(
-        TableName='image',
+        TableName='images',
         Key={'s3objectkey': {'S': s3objectkey}}
     )
 
-    width = item['Item']['body']['M']['width']['N']
-    height = item['Item']['body']['M']['height']['N']
-    file_size = item['Item']['body']['M']['file_size']['N']
+    width = item['Item']['body']['M']['width']['S']
+    height = item['Item']['body']['M']['height']['S']
+    file_size = item['Item']['body']['M']['file_size']['S']
 
     return {
         'status_code': '200',
