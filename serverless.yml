@@ -28,7 +28,7 @@ functions:
     timeout: 30
     events:
       - s3:
-          bucket: bucketname # Escolha o nome do seu bucket que deve ser único
+          bucket: images # Escolha o nome do seu bucket que deve ser único
           event: s3:ObjectCreated:*
           rules:
             - prefix: uploads/
