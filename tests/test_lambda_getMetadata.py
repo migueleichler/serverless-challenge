@@ -40,6 +40,6 @@ class TestLambdaGetMetadata(unittest.TestCase):
 
         response = getMetadata(self.event, None)
 
-        self.assertEqual(response['status_code'], '200')
+        self.assertEqual(response['statusCode'], '200')
         self.assertEqual(response['body']['width'], self.width)
         self.assertEqual(response['body']['height'], self.height)

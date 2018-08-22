@@ -50,7 +50,7 @@ def getMetadata(event, context):
     file_size = item['Item']['body']['M']['file_size']['S']
 
     return {
-        'status_code': '200',
+        'statusCode': '200',
         'body': {'width': width, 'height': height, 'file_size': file_size}
     }
 
