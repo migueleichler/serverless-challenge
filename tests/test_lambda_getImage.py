@@ -11,7 +11,7 @@ class TestLambdaGetImage(unittest.TestCase):
         self.bucket = 'teste'
         self.s3objectkey = 'image-001'
         self.file_path = os.path.dirname(os.path.abspath(__file__)) + '/tmp/'
-        self.file_name = self.file_path + 'image.png'
+        self.file_name = self.file_path + 'image.jpg'
 
         self.event = {
             "queryStringParameters": [

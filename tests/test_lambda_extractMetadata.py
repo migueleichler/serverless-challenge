@@ -12,7 +12,7 @@ class TestLambdaExtractMetadata(unittest.TestCase):
         self.s3objectkey = 'image-001'
         self.table = 'images'
         self.file_path = os.path.dirname(os.path.abspath(__file__)) + '/tmp/'
-        self.file_name = self.file_path + 'image.png'
+        self.file_name = self.file_path + 'image.jpg'
 
         self.event = {
             "Records": [
@@ -54,7 +54,7 @@ class TestLambdaExtractMetadata(unittest.TestCase):
         self.assertEqual(s3objectkey, self.s3objectkey)
         self.assertEqual(width, '50')
         self.assertEqual(height, '50')
-        self.assertEqual(file_size, '10033')
+        self.assertEqual(file_size, '7533')
 
     def tearDown(self):
         os.remove(self.file_name)

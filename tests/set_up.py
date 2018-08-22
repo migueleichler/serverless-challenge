@@ -39,8 +39,8 @@ def set_up_dynamodb_resource(table):
 
 
 def set_up_s3(bucket, s3objectkey, file_name):
-    image = Image.new('RGBA', size=(50, 50), color=(256, 0, 0))
-    image.save(file_name, 'PNG')
+    image = Image.new('RGB', size=(50, 50), color=(256, 0, 0))
+    image.save(file_name)
 
     s3_conn = boto3.resource('s3', region_name='us-east-1')
     s3_conn.create_bucket(Bucket=bucket)
