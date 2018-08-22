@@ -14,11 +14,9 @@ class TestLambdaGetMetadata(unittest.TestCase):
         self.file_size = '130.00'
 
         self.event = {
-            "queryStringParameters": [
-                {
-                    "s3objectkey": self.s3objectkey,
-                }
-            ]
+            "pathParameters": {
+                "s3objectkey": self.s3objectkey,
+            }
         }
 
     @mock_s3

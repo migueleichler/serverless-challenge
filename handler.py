@@ -37,7 +37,7 @@ def extractMetadata(event, context):
 
 
 def getMetadata(event, context):
-    s3objectkey = event['queryStringParameters'][0]['s3objectkey']
+    s3objectkey = event['pathParameters']['s3objectkey']
 
     dynamodb = boto3.client('dynamodb', region_name='us-east-1')
     item = dynamodb.get_item(
