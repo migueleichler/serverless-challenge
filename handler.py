@@ -53,7 +53,3 @@ def getMetadata(event, context):
         'statusCode': '200',
         'body': {'width': width, 'height': height, 'file_size': file_size}
     }
-
-
-def getImage(event, context):
-    pass
