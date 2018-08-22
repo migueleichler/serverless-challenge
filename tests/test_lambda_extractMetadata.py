@@ -56,6 +56,5 @@ class TestLambdaExtractMetadata(unittest.TestCase):
         self.assertEqual(height, '50')
         self.assertEqual(file_size, '10033')
 
-
     def tearDown(self):
         os.remove(self.file_name)
